@@ -56,7 +56,7 @@
     - AWS
 
 - name: Find the default VPC
-  ec2_vpc_net_facts:
+  ec2_vpc_net_info:
     region: "{{ ec2_region }}"
     filters:
       isDefault: "true"
