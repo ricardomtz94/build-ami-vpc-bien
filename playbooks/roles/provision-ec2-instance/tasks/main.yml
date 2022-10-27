@@ -112,24 +112,16 @@
 #---- Launch EC2 instance ----
 - name: Launch an EC2 instance
   ec2:
-    key_name: "{{ key_pair_name }}"
-    assign_public_ip: True
-    vpc_subnet_id: "{{ vpc_subnets.subnets[0].subnet_id }}"
-    image: "{{ debian_ami.images[0].image_id }}"
-    instance_type: "{{ instance_type }}"
-    region: "{{ ec2_region }}"
-    group: "{{ security_group.group_id  }}"
-    wait: yes
-    instance_tags:
-      Name: "{{ placeholder }}"
-      Type: "VyOS"
-    volumes:
-      - device_name: /dev/sdf
-        volume_type: gp2
-        volume_size: "{{ volume_size }}"
-        delete_on_termination: True
-  register: ec2_instance
-  tags:
+       key_name: "{{ key_pair_name }}"
+       group: "{{ security_group.group_id  }}
+       instance_type: "{{ instance_type }}"
+       image: "{{ debian_ami.images[0].image_id }}"
+       wait: true
+       region: "{{ ec2_region }}"
+       vpc_subnet_id: "{{ vpc_subnets.subnets[0].subnet_id }}"
+       assign_public_ip: yes
+    register: ec2_instance
+    tags:
     - aws
     - AWS
 
