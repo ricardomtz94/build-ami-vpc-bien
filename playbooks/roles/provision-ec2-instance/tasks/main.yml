@@ -118,7 +118,7 @@
     image: "{{ debian_ami.images[0].image_id }}"
     instance_type: "{{ instance_type }}"
     region: "{{ ec2_region }}"
-    group_id: "{{ security_group.group_id  }}"
+    group: "{{ security_group.group_id  }}"
     wait: yes
     instance_tags:
       Name: "{{ placeholder }}"
